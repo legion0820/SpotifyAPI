@@ -9,6 +9,7 @@ export default function HomePage() {
     const [ searchParams, setSearchParams ] = useSearchParams()
     const [ success, setSuccess ] = useState(false)
     const authCode = searchParams.get("code")
+    const [ profileInfo, setProfileInfo ] = useState("")
 
     //console.log("authentication Code: ", authCode)
 
@@ -26,9 +27,11 @@ export default function HomePage() {
             })
             
             if (res.status !== 200) {
+                
                 setError(res.error)
               } else {
                 setSuccess(true)
+                setProfileInfo(await res.json())
               }
             }
             if (authCode) {
@@ -36,11 +39,11 @@ export default function HomePage() {
               }
     }, [ authCode ])
 
-
     return (
         <div>
             {error && <p>Error Encountered: {error}</p>}
-            {success ? <p>Success!</p> : <RedirectToAuthCodeFlow />}
+            {!success && <RedirectToAuthCodeFlow />}
+            {profileInfo && <p>Welcome {profileInfo.msg.display_name}!</p>}
         </div>
     )
 

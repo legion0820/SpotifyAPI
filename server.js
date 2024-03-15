@@ -6,10 +6,10 @@ dotenv.config({ path: ".env.local" })
 const client_id = process.env.VITE_SPOTIFY_CLIENT_ID
 const client_secret = process.env.SPOTIFY_CLIENT_SECRET
 const redirect_uri = process.env.VITE_OAUTH_REDIRECT_URL
+//Server file template is credited to Professor Hess at Oregon State University
 
 let token = null
-
-//Server file template is credited to Professor Hess at Oregon State University
+let profile = null
 
 // console.log("== client_id:", client_id)
 // console.log("== client_secret:", client_secret)
@@ -44,8 +44,8 @@ app.post("/api/tokenExchange", async (req, res) => {
     //console.log("TOKEN: ", access_token)
     if (access_token) {
         token = access_token
-        fetchProfile(token)
-      res.status(200).send({ msg: "OK!" })
+        fetchProfile()
+        res.status(200).send({ msg: profile })
     } else {
       res.status(401).send({
         err: "unathorized"
@@ -59,7 +59,7 @@ export async function fetchProfile() {
         method: "GET", headers: { Authorization: `Bearer ${token}` }
     });
 
-    console.log( await result.json())
+    profile = (await result.json())
 }
 
 app.listen(port, () => console.log(`API server listening on port ${port}`))
