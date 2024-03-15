@@ -10,5 +10,5 @@ export default function RedirectToAuthCodeFlow() {
     params.append("scope", "user-read-private user-read-email");
 
 
-    return <a href={`https://accounts.spotify.com/authorize?${params.toString()}`}>Log in with Spotify</a>
+    document.location = `https://accounts.spotify.com/authorize?${params.toString()}`
 }

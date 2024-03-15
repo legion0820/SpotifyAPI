@@ -9,7 +9,7 @@ export default function HomePage() {
     const [ searchParams, setSearchParams ] = useSearchParams()
     const [ success, setSuccess ] = useState(false)
     const authCode = searchParams.get("code")
-    const [ profileInfo, setProfileInfo ] = useState("")
+    const [ profileInfo, setProfileInfo ] = useState()
 
     //console.log("authentication Code: ", authCode)
 
@@ -30,8 +30,16 @@ export default function HomePage() {
                 
                 setError(res.error)
               } else {
-                setSuccess(true)
-                setProfileInfo(await res.json())
+                const profile = (await res.json())
+                //console.log(profile)
+                
+                if(profile.msg) {
+                    setSuccess(true)
+                    setProfileInfo(profile)
+                } else {
+                    //Try again to authenticate
+                    RedirectToAuthCodeFlow()
+                } 
               }
             }
             if (authCode) {
@@ -42,7 +50,7 @@ export default function HomePage() {
     return (
         <div>
             {error && <p>Error Encountered: {error}</p>}
-            {!success && <RedirectToAuthCodeFlow />}
+            {!success && <button onClick={() => RedirectToAuthCodeFlow()}>Log in with Spotify</button>}
             {profileInfo && <p>Welcome {profileInfo.msg.display_name}!</p>}
         </div>
     )
