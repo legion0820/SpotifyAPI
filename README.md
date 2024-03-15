@@ -2,7 +2,7 @@
 final-project-group-18-final-project created by GitHub Classroom. <br>
 Project is implemented using the Assignment-3 template provided by Professor Hess at Oregon State University.<br><br>
 
-*IMPORTANT*
+*IMPORTANT*<br>
 Before running the app, create a local environment file!<br>
 This can be done in the terminal window by doing:<br>
 "touch .env.local"<br><br>
