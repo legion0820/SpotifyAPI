@@ -19,6 +19,7 @@ const port = 8000
 
 app.use(express.json())
 
+//Source used for token exchange and profile data access: https://developer.spotify.com/documentation/web-api/howtos/web-app-profile
 app.post("/api/tokenExchange", async (req, res) => {
   const { code } = req.body
   //console.log("== code:", code)
@@ -44,8 +45,7 @@ app.post("/api/tokenExchange", async (req, res) => {
     //console.log("TOKEN: ", access_token)
     if (access_token) {
         token = access_token
-        fetchProfile()
-        res.status(200).send({ msg: profile })
+        res.status(200).send({ msg: token })
     } else {
       res.status(401).send({
         err: "unathorized"
@@ -53,13 +53,5 @@ app.post("/api/tokenExchange", async (req, res) => {
     }
   }
 })
-
-export async function fetchProfile() {
-    const result = await fetch("https://api.spotify.com/v1/me", {
-        method: "GET", headers: { Authorization: `Bearer ${token}` }
-    });
-
-    profile = (await result.json())
-}
 
 app.listen(port, () => console.log(`API server listening on port ${port}`))
