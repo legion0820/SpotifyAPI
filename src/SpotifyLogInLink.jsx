@@ -7,8 +7,9 @@ export default function RedirectToAuthCodeFlow() {
     params.append("client_id", import.meta.env.VITE_SPOTIFY_CLIENT_ID);
     params.append("response_type", "code");
     params.append("redirect_uri", import.meta.env.VITE_OAUTH_REDIRECT_URL);
-    params.append("scope", "user-read-private user-read-email");
+    params.append("scope", "user-read-private user-read-email user-top-read");
 
-
-    document.location = `https://accounts.spotify.com/authorize?${params.toString()}`
+    // Redirect the user to Spotify's authorization page
+    document.location = `https://accounts.spotify.com/authorize?${params.toString()}`;
 }
+
