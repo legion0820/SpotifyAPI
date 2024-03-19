@@ -83,6 +83,7 @@ export default function SearchPage() {
                 console.log("No artists found.");
             }
         } catch (error) {
+            window.alert("Please log in first!")
             console.error('Error searching:', error);
         }
     }
