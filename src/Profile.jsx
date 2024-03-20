@@ -14,7 +14,7 @@ const Ul = styled.ul`
     border-style: outset;
     padding: 50px;
     border-radius: 5px;
-    box-shadow: 0px 0px 19px 14px aqua;
+    // box-shadow: 0px 0px 19px 14px aqua;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -77,7 +77,8 @@ export default function ProfilePage() {
     function DisplayProfile() {
         return (
             <Div3>
-                <Ul style={{ boxShadow: "0px 0px 19px 14px #1ff434", backgroundColor: "#1ff434", borderStyle: "none"}}>
+                {/* <Ul style={{ boxShadow: "0px 0px 19px 14px #1ff434", backgroundColor: "#1ff434", borderStyle: "none"}}> */}
+                <Ul style={{ borderStyle: "none"}}>
                     <P2>Fun Fact</P2>
                     <Div2>
                     <p>We are the worlds most popular </p>
@@ -103,7 +104,8 @@ export default function ProfilePage() {
                     <P1>Subscription:</P1> {userData.product}
                 </Ul>
 
-                <Ul style={{ boxShadow: "0px 0px 19px 14px #1ff434", backgroundColor: "#1ff434", borderStyle: "none"}}>
+                {/* <Ul style={{ boxShadow: "0px 0px 19px 14px #1ff434", backgroundColor: "#1ff434", borderStyle: "none"}}> */}
+                <Ul style={{ borderStyle: "none"}}>
                 <P2>Fun Fact</P2>
                     <Div2>
                     <p>As per Spotify listening stats, </p>

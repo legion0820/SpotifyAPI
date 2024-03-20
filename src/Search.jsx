@@ -3,8 +3,6 @@ import { token } from './SpotifyToken'
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 
-// CSS styles using Emotion
-
 const AlbumCard = styled.div`
     background-color: #f9f9f9;
     padding: 10px;
@@ -13,6 +11,7 @@ const AlbumCard = styled.div`
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.9);
     flex: 0 1 calc(25% - 20px);
     text-align: center;
+    color: black;
 `;
 
 const containerStyle = css`
@@ -37,6 +36,38 @@ const AlbumContainer = styled.div`
     padding: 20px;
     margin: center;
 `;
+
+const StyledInput = styled.input`
+  display: block;
+  width: 100%; /* Adjust the width as needed, 100% to fill the wrapper */
+  height: 40px;
+  padding: 10px;
+  padding-left: 40px; /* Make space for the emoji */
+  margin: 10px auto;
+  border: 1px solid #ccc;
+  border-radius: 50px;
+  font-size: 25px;
+  &:focus {
+    outline: none; /* Optional: removes the outline to keep the styling consistent */
+  }
+`;
+
+
+const InputWrapper = styled.div`
+  position: relative;
+  display: inline-block;
+  width: 30%;
+`;
+
+const InputEmoji = styled.span`
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 20px; // Adjust the size as needed
+`;
+
+
 
 
 export default function SearchPage() {
@@ -98,14 +129,17 @@ export default function SearchPage() {
     return (
         <div css={containerStyle}>
             <h1>Spotify Search</h1>
-            <input
-                type="text"
-                onKeyDown={handleKeyDown}
-                value={searchInput}
-                onChange={e => setSearchInput(e.target.value)}
-                placeholder="Search for albums, artists, playlists, tracks"
-            />
-            <button onClick={search}>Search</button>
+            <InputWrapper>
+                <InputEmoji><i style={{ color: 'black', fontSize: '20px' }} className="fa-solid fa-magnifying-glass"/></InputEmoji>
+                <StyledInput
+                    type="text"
+                    onKeyDown={handleKeyDown}
+                    value={searchInput}
+                    onChange={e => setSearchInput(e.target.value)}
+                    placeholder="Search for albums, artists, playlists, tracks"
+                />
+            </InputWrapper>
+            {/* <button onClick={search}>Search</button> */}
             {albums.length > 0 && (
                 <AlbumContainer>
                     {albums.map(album => (

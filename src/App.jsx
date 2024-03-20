@@ -8,9 +8,9 @@ import './index.css'
 
 
 const Nav = styled.nav`
-    background-color: #1ff434;
+    background-color: #a4ff94; //greenish
     display: flow-root;
-    box-shadow: 0px 5px 18px 10px #1ff434;
+    // box-shadow: 0px 5px 18px 10px #1ff434;
     margin-bottom: 120px;
 `
 
@@ -76,6 +76,7 @@ export default function Root(props) {
         )
 
     }
+
 
     //Source used for "top" button: https://www.geeksforgeeks.org/how-to-create-a-scroll-to-top-button-in-react-js/
     function topFunction() {

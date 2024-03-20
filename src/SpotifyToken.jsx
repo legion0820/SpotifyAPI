@@ -9,19 +9,20 @@ import './index.css'
 export let token
 
 export const P = styled.p`
-    margin-top: 100px;
-    background-color:#bb9adc;
+    margin-bottom: 70px;
+    // background-color:#bb9adc;
     padding: 5px;
     border-radius: 5px;
-    box-shadow: 0px 0px 10px 11px #bb9adc;
+    // box-shadow: 0px 0px 10px 11px #bb9adc;
 `
 export const Button = styled.button`
     margin-top: 60px;
-    background-color: #1ff434;
+    background-color: #a4ff94;
     font-size: 25px;
     border-radius: 8px;
     border: 2px solid #bb9adc;
     padding: 7px;
+    margin: 10px;
     :hover {
         background-color: #04AA6D;
         cursor: pointer;
@@ -29,8 +30,12 @@ export const Button = styled.button`
 }
 `
 export const Div = styled.div`
+    width: 100%;
+    // height: 60vh;
     display: grid;
-    justify-content: space-evenly;
+    // background-color: #fd8de6;
+    border-radius: 50px;
+    // justify-content: space-evenly;
     justify-items: center;
 `
 
@@ -62,8 +67,8 @@ export default function SpotifyToken() {
 
         return (
             <Div>
-            <P>Begin by logging in with your Spotify Account to experience a new Spotify interface! </P>
-            <Button id="log-in" onClick={() => RedirectToAuthCodeFlow()}>Log in with Spotify</Button>
+                <P>Begin by logging in with your Spotify Account to experience a new Spotify interface! </P>
+                <Button id="log-in" onClick={() => RedirectToAuthCodeFlow()}>Log in</Button>
             </Div>
         )
     }
@@ -71,8 +76,9 @@ export default function SpotifyToken() {
     function LoggedIn() {
         return (
             <Div>
-                <P style={{backgroundColor: "#1ff434", boxShadow: "0px 0px 10px 11px #1ff434"}}>Successfully Logged In <i className="fa-solid fa-check fa-bounce"/></P>
-                <P style={{marginTop: "60px"}}>You can now enjoy navigating your personalized Spotify page from the available links above <i className="fa-regular fa-face-smile"/></P>
+                <P style={{marginTop: "16px"}}>You can now enjoy navigating your personalized Spotify page from the available links above <i className="fa-regular fa-face-smile"/></P>
+                {/* <P style={{backgroundColor: "#1ff434", boxShadow: "0px 0px 10px 11px #1ff434"}}>Successfully Logged In <i className="fa-solid fa-check fa-bounce"/></P> */}
+                <P style={{backgroundColor: "#a4ff94", fontSize: "30px", color: "black", marginBottom: "0px"}}>Successfully Logged In <i className="fa-solid fa-check fa-bounce"/></P>
             </Div>
         )
     }
