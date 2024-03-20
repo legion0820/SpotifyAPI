@@ -90,9 +90,9 @@ export default function Root(props) {
             <Nav>
                 <Ul id="nav-bar">
                     <Li><NavLink to="/" className="nav-link"><i className="fa-solid fa-right-to-bracket"/> Home/Log In</NavLink></Li>
-                    <Li><NavLink to="/search" className="nav-link"><i className="fa-solid fa-magnifying-glass"/> Search</NavLink></Li>
-                    <Li><NavLink to="/topSongs" className="nav-link"><i className="fa-solid fa-music"/> Top Songs</NavLink></Li>
                     <Li><NavLink to="/recommendations" className="nav-link"><i className="fa-solid fa-lightbulb"/> Recommendations</NavLink></Li>
+                    <Li><NavLink to="/topSongs" className="nav-link"><i className="fa-solid fa-music"/> Top Songs</NavLink></Li>
+                    <Li><NavLink to="/search" className="nav-link"><i className="fa-solid fa-magnifying-glass"/> Search</NavLink></Li>
                     <Li><NavLink to="profile" className="nav-link"><i className="fa-solid fa-user"/> Profile</NavLink></Li>
                     
                 </Ul>
