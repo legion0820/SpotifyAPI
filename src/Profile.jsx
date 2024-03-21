@@ -126,7 +126,7 @@ export default function ProfilePage() {
 
     return (
         <>
-            <H2 style={{marginTop: "-30px", marginBottom: "50px"}}>Profile Page</H2>
+            <H2 style={{marginTop: "-30px", marginBottom: "50px", width: "100%"}}>Profile Page</H2>
             {!token && <LogIn/>}
             {userData && <DisplayProfile/>}
         </>

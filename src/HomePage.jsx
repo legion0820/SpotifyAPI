@@ -2,7 +2,7 @@ import styled from "@emotion/styled"
 import SpotifyToken from "./SpotifyToken"
     
 export const H2 = styled.h2`
-    //width: 60%;
+    width: 60%;
     display: flex;
     justify-content: space-evenly;
     font-size: 35px;
