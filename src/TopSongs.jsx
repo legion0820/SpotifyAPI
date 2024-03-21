@@ -2,15 +2,52 @@ import React, { useEffect, useState } from 'react';
 import { token } from './SpotifyToken'; // Import token directly
 import styled from '@emotion/styled';
 
-// Styled components using Emotion
-const TrackList = styled.ul`
-  list-style: none;
-  padding: 0;
+const Card = styled.div`
+  width: 16vw; 
+//   height: 300px;
+  background-color: lightgray;
+  color: black;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+  margin: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 `;
 
-const TrackItem = styled.li`
-  margin-bottom: 10px;
+const CardImage = styled.img`
+  width: 100%;
+  height: 200px; 
+  object-fit: cover; // ensures the image covers the area, without stretching
 `;
+
+const CardContent = styled.div`
+  padding: 10px;
+`;
+
+const CardTitle = styled.h3`
+  margin: 5px 0 20px 0; no margin on sides
+  font-size: 25px; 
+`;
+
+const CardArtist = styled.p`
+  margin: 5px 0 0; // Only add margin to the top
+  font-size: 14px; 
+`;
+
+const AlbumContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px; // Adds space between cards
+  padding: 20px;
+`;
+
+const CardInfo = styled.p`
+  margin: 10px 0; // Keeps things tight
+  font-size: 14px; 
+`;
+
+
 
 export default function TopSongsPages() {
   const [tracks, setTracks] = useState([]);
@@ -47,14 +84,23 @@ export default function TopSongsPages() {
 
   return (
     <div>
-      <h1>Top 5 Tracks</h1>
-      <TrackList>
-        {tracks.map(track => (
-          <TrackItem key={track.id}>
-            {track.name} by {track.artists.map(artist => artist.name).join(', ')}
-          </TrackItem>
+        <h1>Top 5 Tracks</h1>
+        <AlbumContainer>
+        {tracks.map((track) => (
+            <Card key={track.id}>
+                <CardImage src={track.album.images[0].url} alt={`Album art for ${track.name}`} />
+                <CardContent>
+                <CardTitle>{track.name}</CardTitle>
+                <CardArtist>{track.artists.map((artist) => artist.name).join(', ')}</CardArtist>
+                <CardInfo>Album: {track.album.name}</CardInfo>
+                <CardInfo>Release Date: {track.album.release_date}</CardInfo>
+                <CardInfo>Popularity: {track.popularity}/100</CardInfo>
+                <CardInfo><a href={track.external_urls.spotify} target="_blank" rel="noopener noreferrer">Listen on Spotify</a></CardInfo>
+                </CardContent>
+            </Card>
         ))}
-      </TrackList>
+      </AlbumContainer>
     </div>
   );
+  
 }
