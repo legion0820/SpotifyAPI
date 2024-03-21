@@ -48,7 +48,7 @@ const Button2 = styled.button`
     height: 60px;
     border: none;
     color: black;
-    background-color: #bb9adc;
+    background-color: #a4ff94;
     &:hover {
         background-color: #04AA6D;
         
