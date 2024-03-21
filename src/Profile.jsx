@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { token } from "./SpotifyToken";
 //Source used for useNavigate: https://reactrouter.com/en/main/hooks/use-navigate
 import { useNavigate } from "react-router-dom";
-import { H2 } from "./HomePage";
 import { Div, Button, P } from "./SpotifyToken";
 import styled from "@emotion/styled";
 
@@ -11,16 +10,30 @@ const P1 = styled.p`
     font-weight: bolder;
 `
 const Ul = styled.ul`
-    border-style: outset;
-    padding: 50px;
-    border-radius: 5px;
+    border-style: inset;
+    border-radius: 10px;
+    padding: 0px 0px 20px 0px;
     // box-shadow: 0px 0px 19px 14px aqua;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     margin: 30px 30px 100px 30px;
+    background-color: lightgrey;
+    color: black;
 
+`
+const Ul2 = styled.ul`
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 30px 30px 100px 30px;
+    border-radius: 10px;
+    background-color: #8c4eca;
+    color: white;
+    height: 400px;
 `
 
 const Div3 = styled.div`
@@ -78,7 +91,7 @@ export default function ProfilePage() {
         return (
             <Div3>
                 {/* <Ul style={{ boxShadow: "0px 0px 19px 14px #1ff434", backgroundColor: "#1ff434", borderStyle: "none"}}> */}
-                <Ul style={{ borderStyle: "none", backgroundColor: "#8c4eca"}}>
+                <Ul2>
                     <P2>Fun Fact</P2>
                     <Div2>
                     <p>We are the worlds most popular </p>
@@ -92,10 +105,10 @@ export default function ProfilePage() {
                     <a href="https://newsroom.spotify.com/company-info/"> newsroom.spotify.com</a>
                     </Div2>
 
-                </Ul>
+                </Ul2>
                 
                 <Ul>
-                    {userData.images[1] && <img src={userData.images[1].url} alt="User Profile Image" width="100" height="100"/>}
+                    {userData.images[1] && <img style={{borderRadius: "10px 10px 0px 0px"}} src={userData.images[1].url} alt="User Profile Image" width="280" height="280"/>}
                     <P1>Username:</P1> {userData.display_name}
                     <P1>Email:</P1> {userData.email}
                     <P1>Country:</P1> {userData.country}
@@ -105,7 +118,7 @@ export default function ProfilePage() {
                 </Ul>
 
                 {/* <Ul style={{ boxShadow: "0px 0px 19px 14px #1ff434", backgroundColor: "#1ff434", borderStyle: "none"}}> */}
-                <Ul style={{ borderStyle: "none", backgroundColor: "#8c4eca"}}>
+                <Ul2>
                 <P2>Fun Fact</P2>
                     <Div2>
                     <p>As per Spotify listening stats, </p>
@@ -117,7 +130,7 @@ export default function ProfilePage() {
                     <p>-Prateek Saxena,</p>
                     <a href="https://appinventiv.com/blog/spotify-statistics-facts/"> appinventiv.com</a>
                     </Div2>
-                </Ul>
+                </Ul2>
                 
             </Div3>
         )
@@ -126,7 +139,7 @@ export default function ProfilePage() {
 
     return (
         <>
-            <H2 style={{marginTop: "-30px", marginBottom: "50px", width: "100%"}}>Profile Page</H2>
+            <h1>User Profile</h1>
             {!token && <LogIn/>}
             {userData && <DisplayProfile/>}
         </>

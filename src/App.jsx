@@ -11,7 +11,8 @@ const Nav = styled.nav`
     background-color: #a4ff94; //greenish
     display: flow-root;
     // box-shadow: 0px 5px 18px 10px #1ff434;
-    margin-bottom: 120px;
+    padding-bottom: 10px;
+    margin-bottom: 80px;
 `
 
 const Ul = styled.ul`
